@@ -1,0 +1,431 @@
+/**
+ * NetTopologySuite Tutorial — Custom Theme Styles
+ * Cartography-inspired palette: deep forest green, contour lines, ink-on-paper feel.
+ */
+
+:root {
+  --nts-green: #0b6e4f;
+  --nts-green-soft: #14916a;
+  --nts-green-deep: #074d37;
+  --nts-ink: #0f1d18;
+  --nts-paper: #f7f6f1;
+  --nts-sand: #e9e6da;
+  --nts-line: #d8d4c4;
+
+  /* Override VitePress vars */
+  --vp-c-brand-1: var(--nts-green);
+  --vp-c-brand-2: var(--nts-green-soft);
+  --vp-c-brand-3: var(--nts-green-deep);
+  --vp-c-brand-light: var(--nts-green-soft);
+
+  --vp-button-brand-bg: var(--nts-green);
+  --vp-button-brand-hover-bg: var(--nts-green-deep);
+  --vp-button-brand-active-bg: var(--nts-green-deep);
+
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, var(--nts-green-deep), var(--nts-green-soft));
+  --vp-home-hero-image-background-image: radial-gradient(ellipse at center, rgba(11, 110, 79, 0.18), transparent 70%);
+  --vp-home-hero-image-filter: blur(60px);
+
+  --vp-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --vp-font-family-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.dark {
+  --nts-ink: #e8efe9;
+  --nts-paper: #0c1411;
+  --nts-sand: #131c18;
+  --nts-line: #1f2d26;
+
+  --vp-c-brand-1: #4dd6a3;
+  --vp-c-brand-2: #38c290;
+  --vp-c-brand-3: #25a878;
+
+  --vp-home-hero-image-background-image: radial-gradient(ellipse at center, rgba(77, 214, 163, 0.22), transparent 70%);
+
+  --vp-bg: #0c1411;
+  --vp-c-bg: #0c1411;
+  --vp-c-bg-alt: #0f1814;
+  --vp-c-bg-soft: #131c18;
+  --vp-c-divider: #1f2d26;
+  --vp-c-gutter: #1f2d26;
+  --vp-c-text-1: #e8efe9;
+  --vp-c-text-2: #a8b8b0;
+  --vp-c-text-3: #7a8c83;
+}
+
+/* ---------- Base ---------- */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-feature-settings: 'ss01', 'cv11';
+}
+
+::selection {
+  background: rgba(11, 110, 79, 0.25);
+}
+
+/* ---------- Layout shell ---------- */
+.nts-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.nts-main {
+  flex: 1;
+}
+
+/* ---------- Topographic hero backdrop ---------- */
+.nts-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.nts-hero-bg svg {
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  width: 70%;
+  height: 140%;
+  opacity: 0.5;
+}
+
+.dark .nts-hero-bg svg {
+  opacity: 0.35;
+}
+
+.nts-contour {
+  fill: none;
+  stroke: var(--nts-green);
+  stroke-width: 0.6;
+  opacity: 0.25;
+}
+
+.dark .nts-contour {
+  stroke: var(--vp-c-brand-1);
+  opacity: 0.18;
+}
+
+/* ---------- Brand logo glyph ---------- */
+.nts-logo {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Feature grid (custom home) ---------- */
+.nts-features {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 2rem;
+}
+
+.nts-features-head {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.nts-features-head .eyebrow {
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--vp-c-brand-1);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.nts-features-head h2 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--vp-c-text-1);
+}
+
+.nts-features-head p {
+  margin: 0.8rem auto 0;
+  max-width: 640px;
+  color: var(--vp-c-text-2);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.nts-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--vp-c-divider);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+@media (max-width: 912px) {
+  .nts-feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .nts-feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.nts-feature {
+  background: var(--vp-c-bg);
+  padding: 1.8rem 1.6rem;
+  transition: background 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.nts-feature:hover {
+  background: var(--vp-c-bg-soft);
+}
+
+.nts-feature .icon {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: rgba(11, 110, 79, 0.1);
+  color: var(--vp-c-brand-1);
+  margin-bottom: 0.4rem;
+}
+
+.dark .nts-feature .icon {
+  background: rgba(77, 214, 163, 0.12);
+}
+
+.nts-feature h3 {
+  font-size: 1.1rem;
+  font-weight: 650;
+  margin: 0;
+  color: var(--vp-c-text-1);
+  letter-spacing: -0.01em;
+}
+
+.nts-feature p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+}
+
+.nts-feature .tag {
+  margin-top: auto;
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.72rem;
+  color: var(--vp-c-text-3);
+  padding-top: 0.8rem;
+}
+
+/* ---------- Path CTA ---------- */
+.nts-paths {
+  max-width: 1152px;
+  margin: 1rem auto 4rem;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .nts-paths {
+    grid-template-columns: 1fr;
+  }
+}
+
+.nts-path {
+  position: relative;
+  display: block;
+  padding: 1.8rem 1.8rem 1.6rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 14px;
+  background: var(--vp-c-bg);
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.nts-path::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--vp-c-brand-1);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s ease;
+}
+
+.nts-path:hover {
+  transform: translateY(-3px);
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 12px 30px -12px rgba(11, 110, 79, 0.25);
+}
+
+.nts-path:hover::before {
+  transform: scaleY(1);
+}
+
+.nts-path .step {
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--vp-c-brand-1);
+}
+
+.nts-path h3 {
+  margin: 0.4rem 0 0.5rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  letter-spacing: -0.015em;
+}
+
+.nts-path p {
+  margin: 0 0 1rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+  font-size: 0.97rem;
+}
+
+.nts-path .arrow {
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.85rem;
+  color: var(--vp-c-brand-1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: gap 0.2s ease;
+}
+
+.nts-path:hover .arrow {
+  gap: 0.7rem;
+}
+
+/* ---------- Stats strip ---------- */
+.nts-stats {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  border-top: 1px solid var(--vp-c-divider);
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+@media (max-width: 768px) {
+  .nts-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1rem;
+  }
+}
+
+.nts-stat {
+  text-align: center;
+}
+
+.nts-stat .num {
+  font-family: var(--vp-font-family-mono);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--vp-c-brand-1);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.nts-stat .label {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+}
+
+/* ---------- Doc tweaks ---------- */
+.vp-doc {
+  :not(pre) > code {
+    font-weight: 600;
+  }
+}
+
+.vp-doc h1 {
+  letter-spacing: -0.02em;
+}
+
+.vp-doc h2 {
+  margin-top: 3rem;
+  border-top: 1px solid var(--vp-c-divider);
+  padding-top: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.vp-doc h3 {
+  letter-spacing: -0.01em;
+}
+
+/* Custom tip/warning boxes with brand color */
+.vp-doc .custom-block.tip {
+  border-color: var(--vp-c-brand-1);
+  background: rgba(11, 110, 79, 0.06);
+}
+
+.dark .vp-doc .custom-block.tip {
+  background: rgba(77, 214, 163, 0.07);
+}
+
+/* SVG geometry diagrams inline */
+.nts-diagram {
+  display: block;
+  margin: 1.5rem auto;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.nts-diagram figcaption {
+  text-align: center;
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-3);
+  font-family: var(--vp-font-family-mono);
+}
+
+/* Scroll reveal */
+.nts-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.nts-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nts-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
