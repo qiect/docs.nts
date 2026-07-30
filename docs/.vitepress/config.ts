@@ -79,6 +79,7 @@ export default withMermaid(
           collapsed: false,
           items: [
             { text: '坐标与几何层级', link: '/core/geometry-hierarchy' },
+            { text: '几何属性', link: '/core/geometry-properties' },
             { text: 'WKT 与 WKB', link: '/core/wkt-wkb' },
             { text: '几何工厂 GeometryFactory', link: '/core/geometry-factory' },
             { text: '精度模型 PrecisionModel', link: '/core/precision-model' }
