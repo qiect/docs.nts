@@ -1,0 +1,15 @@
+{
+  "name": "nts-tutorial",
+  "version": "1.0.0",
+  "description": "A comprehensive NetTopologySuite tutorial site built with VitePress",
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.5.0",
+    "vue": "^3.5.13"
+  }
+}
