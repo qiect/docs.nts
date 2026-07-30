@@ -93,7 +93,8 @@ export default withMermaid(
           items: [
             { text: '叠加分析 (Overlay)', link: '/operations/overlay' },
             { text: '缓冲区 Buffer', link: '/operations/buffer' },
-            { text: '凸包与简化', link: '/operations/convex-simplify' }
+            { text: '凸包与简化', link: '/operations/convex-simplify' },
+            { text: '仿射变换', link: '/operations/affine-transform' }
           ]
         }
       ],
@@ -113,7 +114,8 @@ export default withMermaid(
           collapsed: false,
           items: [
             { text: '测量与距离', link: '/analysis/measurement' },
-            { text: '最近点与投影', link: '/analysis/nearest-points' }
+            { text: '最近点与投影', link: '/analysis/nearest-points' },
+            { text: '线性参考', link: '/analysis/linear-referencing' }
           ]
         }
       ],
@@ -125,6 +127,8 @@ export default withMermaid(
             { text: 'PreparedGeometry 性能优化', link: '/advanced/prepared-geometry' },
             { text: '三角剖分与曲面', link: '/advanced/triangulation' },
             { text: '空间索引 STRtree', link: '/advanced/spatial-index' },
+            { text: '几何提取与遍历', link: '/advanced/geometry-iteration' },
+            { text: '批量 Union', link: '/advanced/batch-union' },
             { text: '自定义操作与扩展', link: '/advanced/extending' }
           ]
         }
