@@ -53,6 +53,19 @@ var candidates = tree.Query(queryEnvelope).ToList();
 `STRtree` 在 `Build` 后变为只读——继续插入会被忽略。
 :::
 
+```mermaid
+stateDiagram-v2
+    [*] --> 插入中: new STRtree()
+    插入中 --> 只读: Build()
+    插入中 --> 查询失败: Query() 未 Build
+    只读 --> 静默失败: Insert()
+    只读 --> [*]: Query() 正常
+    查询失败 --> 插入中: 补调 Build()
+    静默失败 --> 只读: 索引已锁定
+```
+
+STRtree 的生命周期是一次性的：先批量插入，再 Build，之后只读。若需动态更新，请改用 `Quadtree`。
+
 ## 查询模式
 
 ### 1. 范围查询
@@ -182,6 +195,19 @@ var intersecting = candidates
 
 候选数通常远小于总数据量，所以精过滤虽慢但可接受。如果还嫌慢，对查询几何用 `PreparedGeometry`。
 :::
+
+```mermaid
+flowchart LR
+    Q["查询几何<br/>(取 Envelope)"] --> F1["STRtree.Query<br/>(Envelope 相交)"]
+    F1 --> C["候选集<br/>(少量误报)"]
+    C --> F2["真实谓词<br/>Intersects / Covers"]
+    F2 --> R["精确结果"]
+    style Q fill:#e6f4ee,stroke:#0b6e4f,color:#0b6e4f
+    style F1 fill:#0b6e4f,stroke:none,color:#fff
+    style C fill:#fff,stroke:#999
+    style F2 fill:#0b6e4f,stroke:none,color:#fff
+    style R fill:#e6f4ee,stroke:#0b6e4f,color:#0b6e4f
+```
 
 ## 实战：批量最近邻（KNN）
 

@@ -34,22 +34,20 @@ NTS 的能力大致可以分为四层：
 
 ## NTS 与其他库的关系
 
-```
-            ┌──────────────────────────┐
-            │   OGC Simple Features    │  规范层
-            └────────────┬─────────────┘
-                         │
-        ┌────────────────┼─────────────────┐
-        │                │                 │
-   ┌────▼─────┐    ┌─────▼─────┐    ┌──────▼──────┐
-   │   JTS    │    │   NTS     │    │   GEOS      │
-   │ (Java)   │    │  (.NET)   │    │  (C/C++)    │
-   └────┬─────┘    └─────┬─────┘    └─────────────┘
-        │                │
-   ┌────▼─────┐    ┌─────▼──────────────┐
-   │ PostGIS  │    │ EF Core 插件 /      │
-   │ GeoTools │    │ Npgsql / Sqlite ...│
-   └──────────┘    └────────────────────┘
+```mermaid
+graph TD
+    OGC["OGC Simple Features<br/>(规范层)"]
+    OGC --> JTS["JTS<br/>(Java)"]
+    OGC --> NTS["NTS<br/>(.NET)"]
+    OGC --> GEOS["GEOS<br/>(C/C++)"]
+    JTS --> PG["PostGIS / GeoTools"]
+    NTS --> EF["EF Core 插件 /<br/>Npgsql / Sqlite …"]
+    classDef spec fill:#0b6e4f,color:#fff,stroke:none;
+    classDef impl fill:#e6f4ee,color:#0b6e4f,stroke:#0b6e4f;
+    classDef eco fill:#fff,color:#333,stroke:#999;
+    class OGC spec;
+    class JTS,NTS,GEOS impl;
+    class PG,EF eco;
 ```
 
 - **JTS**：算法的"原版"，所有移植都参照它。

@@ -62,16 +62,23 @@ var seq2 = new PackedCoordinateSequenceFactory()
 
 ## Geometry 继承树
 
-```
-Geometry  (抽象基类)
-├── Point
-├── LineString
-│   └── LinearRing              (闭合、不自相交的 LineString)
-└── Polygon
-└── GeometryCollection
-    ├── MultiPoint              (Point 集合)
-    ├── MultiLineString         (LineString 集合)
-    └── MultiPolygon            (Polygon 集合)
+```mermaid
+graph TD
+    G["Geometry<br/>(抽象基类)"]
+    G --> P["Point"]
+    G --> LS["LineString"]
+    LS --> LR["LinearRing<br/>(闭合、不自相交)"]
+    G --> Poly["Polygon"]
+    G --> GC["GeometryCollection"]
+    GC --> MP["MultiPoint<br/>(Point 集合)"]
+    GC --> MLS["MultiLineString<br/>(LineString 集合)"]
+    GC --> MPoly["MultiPolygon<br/>(Polygon 集合)"]
+    classDef base fill:#0b6e4f,color:#fff,stroke:none;
+    classDef single fill:#e6f4ee,color:#0b6e4f,stroke:#0b6e4f;
+    classDef multi fill:#fff3e6,color:#a86300,stroke:#a86300;
+    class G base;
+    class P,LS,LR,Poly single;
+    class GC,MP,MLS,MPoly multi;
 ```
 
 ::: tip OGC 简单要素规范

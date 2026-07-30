@@ -77,6 +77,20 @@ Console.WriteLine(p2.X);  // 1.23456 ← 原样
 
 叠加运算（Union/Intersection 等）内部会使用输入几何的精度模型。如果两个几何精度模型不同，NTS 会取 **更宽松**（精度更低）的那个。
 
+```mermaid
+flowchart LR
+    A["几何 A<br/>(Fixed 100)"] --> M{"精度模型<br/>不同?"}
+    B["几何 B<br/>(Floating)"] --> M
+    M -->|是| L["取更宽松的一方<br/>(Floating)"]
+    M -->|否| S["沿用同一精度"]
+    L --> OP["执行叠加/距离运算"]
+    S --> OP
+    style A fill:#e6f4ee,stroke:#0b6e4f,color:#0b6e4f
+    style B fill:#e6f4ee,stroke:#0b6e4f,color:#0b6e4f
+    style L fill:#a86300,stroke:none,color:#fff
+    style OP fill:#0b6e4f,stroke:none,color:#fff
+```
+
 ```csharp
 var fFixed = new GeometryFactory(new PrecisionModel(100));
 var fFloat = new GeometryFactory(new PrecisionModel(PrecisionModels.Floating));

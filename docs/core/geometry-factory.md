@@ -157,10 +157,22 @@ var mp2 = factory.CreateMultiPoint(new[]
 
 `BuildGeometry` 接收一个 `Geometry` 列表，自动选择最合适的容器：
 
-- 全是 `Point` → 返回 `MultiPoint`
-- 全是 `Polygon` → 返回 `MultiPolygon`
-- 单一几何 → 直接返回该几何
-- 混合类型 → 返回 `GeometryCollection`
+```mermaid
+flowchart TD
+    IN["输入 Geometry 列表"] --> N{"数量?"}
+    N -->|1 个| SINGLE["直接返回该几何"]
+    N -->|多个| T{"类型是否单一?"}
+    T -->|全 Point| MP["MultiPoint"]
+    T -->|全 LineString| MLS["MultiLineString"]
+    T -->|全 Polygon| MPOLY["MultiPolygon"]
+    T -->|混合| GC["GeometryCollection"]
+    style IN fill:#e6f4ee,stroke:#0b6e4f,color:#0b6e4f
+    style MP fill:#fff3e6,stroke:#a86300,color:#a86300
+    style MLS fill:#fff3e6,stroke:#a86300,color:#a86300
+    style MPOLY fill:#fff3e6,stroke:#a86300,color:#a86300
+    style GC fill:#fff3e6,stroke:#a86300,color:#a86300
+    style SINGLE fill:#fff,stroke:#999
+```
 
 ```csharp
 var geoms = new List<Geometry>

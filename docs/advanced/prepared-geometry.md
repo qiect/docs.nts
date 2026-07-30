@@ -180,6 +180,21 @@ foreach (var d in candidates)
 }
 ```
 
+```mermaid
+flowchart LR
+    P["待判点"] --> Q["取 Envelope"]
+    Q --> T["STRtree 粗过滤<br/>O(log n)"]
+    T --> C["候选行政区<br/>(少量)"]
+    C --> PG["PreparedGeometry.Covers<br/>(缓存索引加速)"]
+    PG --> H{"命中?"}
+    H -->|是| R["归属行政区"]
+    H -->|否| N["无归属"]
+    style P fill:#e6f4ee,stroke:#0b6e4f,color:#0b6e4f
+    style T fill:#0b6e4f,stroke:none,color:#fff
+    style PG fill:#0b6e4f,stroke:none,color:#fff
+    style R fill:#e6f4ee,stroke:#0b6e4f,color:#0b6e4f
+```
+
 ## 内存与生命周期
 
 `PreparedGeometry` 持有对原始 `Geometry` 的引用，并附加索引结构，所以内存占用比原几何略大。

@@ -150,6 +150,21 @@ EF Core 把这些方法翻译成 PostGIS / SpatiaLite / SQL Server 的对应函�
 
 不能翻译的方法会被 EF Core 在客户端执行——拉取所有数据后再过滤。这通常很慢，需要警惕：
 
+```mermaid
+flowchart TD
+    L["LINQ 表达式"] --> T{"EF Core 可翻译?"}
+    T -->|是| SQL["翻译为 SQL<br/>在数据库执行"]
+    SQL --> FR["少量结果返回"]
+    T -->|否| CS["客户端评估<br/>拉取全表数据"]
+    CS --> WARN["⚠️ 性能警告"]
+    FR --> FT["客户端精细处理"]
+    WARN --> FT
+    style SQL fill:#0b6e4f,stroke:none,color:#fff
+    style CS fill:#a86300,stroke:none,color:#fff
+    style WARN fill:#fff3e6,stroke:#a86300,color:#a86300
+    style FT fill:#e6f4ee,stroke:#0b6e4f,color:#0b6e4f
+```
+
 ```csharp
 // ⚠️ 警告：NearestPoints 不可翻译
 var bad = await db.Places

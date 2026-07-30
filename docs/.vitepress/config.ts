@@ -1,12 +1,14 @@
 import { defineConfig } from 'vitepress'
+import { withMermaid } from 'vitepress-plugin-mermaid'
 
-export default defineConfig({
-  lang: 'zh-CN',
-  base: '/docs.nts/',
-  title: 'NetTopologySuite 教程',
-  description: '面向 .NET 开发者的全面、深入的 NetTopologySuite (NTS) 空间数据处理指南',
-  lastUpdated: true,
-  cleanUrls: true,
+export default withMermaid(
+  defineConfig({
+    lang: 'zh-CN',
+    base: '/docs.nts/',
+    title: 'NetTopologySuite 教程',
+    description: '面向 .NET 开发者的全面、深入的 NetTopologySuite (NTS) 空间数据处理指南',
+    lastUpdated: true,
+    cleanUrls: true,
 
   head: [
     ['meta', { name: 'theme-color', content: '#0b6e4f' }],
@@ -200,4 +202,10 @@ export default defineConfig({
     lineNumbers: true,
     theme: { light: 'github-light', dark: 'github-dark' }
   }
-})
+  }),
+  {
+    mermaid: {
+      theme: 'default'
+    }
+  }
+)

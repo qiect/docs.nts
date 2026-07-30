@@ -26,17 +26,17 @@
 
 每个几何被分成三部分：
 
-```
-┌─────────────────────────────┐
-│  exterior (外部)              │  ← 不在几何上的所有点
-│   ┌───────────────────────┐  │
-│   │  boundary (边界)         │  │ ← 几何的"轮廓"
-│   │   ┌─────────────────┐  │  │
-│   │   │  interior (内部)    │  │  │ ← 几何"里面"的点
-│   │   └─────────────────┘  │  │
-│   └───────────────────────┘  │
-└─────────────────────────────┘
-```
+<figure class="nts-diagram">
+<svg viewBox="0 0 340 200" width="340" height="200">
+  <rect x="10" y="10" width="320" height="180" fill="rgba(11,110,79,0.06)" stroke="#0b6e4f" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <rect x="50" y="40" width="240" height="120" fill="rgba(11,110,79,0.14)" stroke="#0b6e4f" stroke-width="2"/>
+  <rect x="100" y="70" width="140" height="60" fill="rgba(11,110,79,0.32)" stroke="#0b6e4f" stroke-width="2"/>
+  <text x="20" y="28" font-family="monospace" font-size="11" fill="#0b6e4f">exterior（外部）</text>
+  <text x="60" y="58" font-family="monospace" font-size="11" fill="#0b6e4f">boundary（边界）</text>
+  <text x="110" y="88" font-family="monospace" font-size="11" fill="#fff">interior（内部）</text>
+</svg>
+<figcaption>每个几何被分为 interior / boundary / exterior 三部分</figcaption>
+</figure>
 
 不同几何类型的 boundary 规则：
 
@@ -182,16 +182,21 @@ a.EqualsExact(b);          // false（逐顶点比较，顺序不同）
 
 ## 谓词之间的关系图
 
-```
-                 ┌─ Disjoint ──── 全互斥
-                 │
-   两个几何 ─────┤
-                 │                ┌─ Contains / Within
-                 └─ Intersects ───┤
-                                  ├─ Covers / CoveredBy
-                                  ├─ Touches
-                                  ├─ Crosses
-                                  └─ Overlaps
+```mermaid
+graph TD
+    Q["两个几何"] --> D["Disjoint<br/>(全互斥)"]
+    Q --> I["Intersects"]
+    I --> CW["Contains / Within<br/>(严格内部)"]
+    I --> CV["Covers / CoveredBy<br/>(含边界)"]
+    I --> T["Touches<br/>(仅边界接触)"]
+    I --> CR["Crosses<br/>(穿越)"]
+    I --> O["Overlaps<br/>(同维度部分相交)"]
+    classDef root fill:#0b6e4f,color:#fff,stroke:none;
+    classDef branch fill:#e6f4ee,color:#0b6e4f,stroke:#0b6e4f;
+    classDef leaf fill:#fff,color:#333,stroke:#999;
+    class Q root;
+    class D,I branch;
+    class CW,CV,T,CR,O leaf;
 ```
 
 记忆要点：
