@@ -2,12 +2,24 @@
 
 > 面向 .NET 开发者的全面、深入的 NetTopologySuite (NTS) 空间数据处理教程。
 
+[![Deploy Status](https://github.com/qiect/docs.nts/actions/workflows/deploy.yml/badge.svg)](https://github.com/qiect/docs.nts/actions/workflows/deploy.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![VitePress](https://img.shields.io/badge/VitePress-1.x-646cff.svg)](https://vitepress.dev/)
+
 基于 VitePress 构建，包含 20+ 章节教程、100+ 可运行代码示例与 15+ 几何图解。
 
 ## 在线访问
 
 - 网站地址：<https://qiect.github.io/docs.nts/>
 - 源码仓库：<https://github.com/qiect/docs.nts>
+
+## 项目特色
+
+- **从零到精通的完整路径**：从安装配置到高级空间索引、三角剖分，覆盖 NTS 全部核心能力。
+- **图解驱动**：关键几何操作（叠加、缓冲、DE-9IM）配有 SVG 示意图，便于直观理解。
+- **可运行示例**：所有代码片段均可直接复制到 .NET 8 控制台项目中运行。
+- **真实场景导向**：围栏判断、轨迹分析、配送范围、附近查询等典型 LBS 需求都有完整演示。
+- **生态衔接**：覆盖 EF Core、PostGIS、SpatiaLite、SQL Server 等主流数据库集成方案。
 
 ## 教程内容
 
@@ -66,10 +78,23 @@ VitePress 的 `base` 已设置为 `/docs.nts/`，与仓库名一致。如需部�
 │   ├── analysis/              # 空间分析
 │   ├── advanced/              # 进阶主题
 │   ├── integration/           # 生态集成
-│   └── cookbook/               # 速查资源
+│   └── cookbook/              # 速查资源
 ├── .github/workflows/deploy.yml
-└── package.json
+├── package.json
+└── package-lock.json
 ```
+
+## 贡献
+
+欢迎通过 Issue 或 Pull Request 反馈问题、补充示例或新增章节：
+
+1. Fork 本仓库
+2. 新建分支：`git checkout -b feat/your-topic`
+3. 提交更改：`git commit -m 'feat: add xxx'`
+4. 推送分支：`git push origin feat/your-topic`
+5. 提交 Pull Request
+
+教程内容位于 `docs/` 目录下，每个 `.md` 文件即一个页面。新增章节后请在 [docs/.vitepress/config.ts](docs/.vitepress/config.ts) 的 `sidebar` 中登记。
 
 ## License
 
