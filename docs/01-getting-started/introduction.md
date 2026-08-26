@@ -83,6 +83,6 @@ Console.WriteLine($"两点距离 = {meters:F4} 单位");
 
 ## 接下来
 
-- [快速开始](./getting-started.md)：装好包、跑通第一段代码
+- [快速开始](./quickstart.md)：装好包、跑通第一段代码
 - [第一个几何对象](./first-geometry.md)：动手创建并操作几何
 - [坐标与几何层级](../02-geometry-fundamentals/geometry-hierarchy.md)：理解 NTS 的对象模型

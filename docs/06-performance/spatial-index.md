@@ -828,5 +828,5 @@ var exact = results.Where(g => g.Intersects(queryGeometry)).ToList();
 
 - [PreparedGeometry](./prepared-geometry.md)：精过滤加速，与 STRtree 组成"粗过滤 + 精判断"
 - [最近点与投影](../05-spatial-measurement/nearest-points.md)：`DistanceOp`、`IndexedPointInAreaLocator`
-- [三角剖分](./triangulation.md)：另一类空间结构
+- [三角剖分](../07-advanced-topics/triangulation.md)：另一类空间结构
 - [API 速查表](../appendix/cheatsheet.md)

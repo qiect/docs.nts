@@ -773,7 +773,7 @@ foreach (Polygon t in tris.Geometries)
 
 ## 下一步
 
-- [空间索引 STRtree](./spatial-index.md)：定位查询的索引基础
+- [空间索引 STRtree](../06-performance/spatial-index.md)：定位查询的索引基础
 - [自定义操作与扩展](./extending.md)：实现自己的 `ITriangleVisitor`
 - [几何属性](../02-geometry-fundamentals/geometry-properties.md)：ConvexHull 等与三角剖分相关的属性
 - [API 速查表](../appendix/cheatsheet.md)：所有 NTS 类一览
