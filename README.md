@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![VitePress](https://img.shields.io/badge/VitePress-1.x-646cff.svg)](https://vitepress.dev/)
 
-基于 VitePress 构建，包含 20+ 章节教程、100+ 可运行代码示例与 15+ 几何图解。
+基于 VitePress 构建，包含 25 篇教程、100+ 可运行代码示例与 15+ 几何图解。
 
 ## 在线访问
 
@@ -23,16 +23,17 @@
 
 ## 教程内容
 
-| 板块 | 章节 |
+| 阶段 | 章节 |
 | --- | --- |
-| 入门 | 认识 NTS · 快速开始 · 第一个几何对象 |
-| 核心概念 | 几何层级 · WKT/WKB · GeometryFactory · 精度模型 |
-| 几何操作 | 叠加分析 · 缓冲区 · 凸包与简化 |
-| 空间谓词 | 八大谓词 · DE-9IM 模型 |
-| 空间分析 | 测量与距离 · 最近点与投影 |
-| 进阶 | PreparedGeometry · 三角剖分 · 空间索引 · 自定义扩展 |
+| 入门之旅 | 认识 NTS · 快速开始 · 第一个几何对象 |
+| 几何基础 | 坐标与坐标序列 · 几何类型层级 · 几何属性 · 几何工厂 · 精度模型 · WKT/WKB · 几何遍历与提取 |
+| 空间关系 | 八大谓词 · DE-9IM 模型 |
+| 几何运算 | 叠加分析 · 缓冲区 · 凸包与简化 · 仿射变换 · 批量合并 |
+| 空间测量 | 测量与距离 · 最近点与投影 · 线性参考 |
+| 性能优化 | PreparedGeometry · 空间索引 STRtree |
+| 高级主题 | 三角剖分 · 自定义操作与扩展 |
 | 生态集成 | EF Core · PostGIS / SpatiaLite / SQL Server |
-| 速查资源 | API 速查表 · FAQ · 官方资料 |
+| 附录 | API 速查表 · 常见问题 · 官方资料 |
 
 ## 本地开发
 
@@ -67,18 +68,19 @@ VitePress 的 `base` 已设置为 `/docs.nts/`，与仓库名一致。如需部�
 .
 ├── docs/
 │   ├── .vitepress/
-│   │   ├── config.ts          # 站点配置（导航/侧边栏/搜索）
-│   │   └── theme/             # 自定义主题
+│   │   ├── config.ts              # 站点配置（导航/侧边栏/搜索）
+│   │   └── theme/                 # 自定义主题
 │   ├── public/favicon.svg
-│   ├── index.md               # 首页
-│   ├── guide/                 # 入门教程
-│   ├── core/                  # 核心概念
-│   ├── operations/            # 几何操作
-│   ├── predicates/            # 空间谓词
-│   ├── analysis/              # 空间分析
-│   ├── advanced/              # 进阶主题
-│   ├── integration/           # 生态集成
-│   └── cookbook/              # 速查资源
+│   ├── index.md                   # 首页
+│   ├── 01-getting-started/        # 入门之旅
+│   ├── 02-geometry-fundamentals/  # 几何基础
+│   ├── 03-spatial-relations/      # 空间关系
+│   ├── 04-geometry-operations/    # 几何运算
+│   ├── 05-spatial-measurement/    # 空间测量
+│   ├── 06-performance/            # 性能优化
+│   ├── 07-advanced-topics/        # 高级主题
+│   ├── 08-ecosystem/              # 生态集成
+│   └── appendix/                  # 附录
 ├── .github/workflows/deploy.yml
 ├── package.json
 └── package-lock.json
