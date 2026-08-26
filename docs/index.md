@@ -11,50 +11,50 @@ hero:
   actions:
     - theme: brand
       text: 开始学习
-      link: /guide/getting-started
+      link: /01-getting-started/introduction
     - theme: alt
-      text: 项目介绍
-      link: /guide/introduction
+      text: 快速开始
+      link: /01-getting-started/quickstart
 
 features:
-  - icon: 🧭
-    title: 完整几何类型层级
-    details: Point、LineString、Polygon 及其 Multi 集合类型，遵循 OGC 简单要素规范 (SFS)，与 PostGIS、SQL Server 空间类型一一对应。
-    link: /core/geometry-hierarchy
-    linkText: 查看几何层级 →
-  - icon: ⊕
-    title: 强大的叠加分析
-    details: Union、Intersection、Difference、SymDifference 四大叠加算子，支持任意维度组合与稳健的拓扑运算。
-    link: /operations/overlay
-    linkText: 学习叠加分析 →
-  - icon: ◯
-    title: 缓冲区与距离
-    details: 单边/双边缓冲、端点与连接风格、象限分段数控制，配合 Distance、NearestPoints 解决邻域问题。
-    link: /operations/buffer
-    linkText: 探索缓冲区 →
-  - icon: 🔍
-    title: 空间谓词与 DE-9IM
-    details: Contains、Within、Intersects、Touches、Crosses、Overlaps、Disjoint 七大谓词，背后是完整的 DE-9IM 维度扩展交矩阵。
-    link: /predicates/relationships
-    linkText: 理解空间谓词 →
-  - icon: ⚡
-    title: PreparedGeometry 性能优化
-    details: 对同一几何进行多次空间判定时，PreparedGeometry 可缓存索引与拓扑结构，带来数量级的性能提升。
-    link: /advanced/prepared-geometry
-    linkText: 提速实战 →
-  - icon: 🗂️
-    title: STRtree 空间索引
-    details: 内置 STRtree、Quadtree、KdTree 等空间索引，让"在大数据集中查找附近要素"从 O(n) 降到 O(log n)。
-    link: /advanced/spatial-index
-    linkText: 空间索引指南 →
-  - icon: 🔌
-    title: EF Core 与数据库集成
-    details: 与 Microsoft.EntityFrameworkCore.Sqlite.NetTopologySuite / Npgsql.EntityFrameworkCore.PostgreSQL 无缝集成，直接读写 geometry 列。
-    link: /integration/ef-core
-    linkText: 集成 EF Core →
+  - icon: 🚀
+    title: 从零开始，步步为营
+    details: 从创建第一个 Point 到理解 DE-9IM 矩阵，8 个阶段、25 篇文章，带你从 .NET 开发者成长为空间数据处理专家。
+    link: /01-getting-started/introduction
+    linkText: 开始学习 →
   - icon: 📐
-    title: 三角剖分与曲面
-    details: Delaunay 三角剖分、Voronoi 图、Delaunay 三角化器构建连续曲面与最近邻区域，服务地理分析。
-    link: /advanced/triangulation
-    linkText: 三角剖分入门 →
+    title: 完整的几何模型
+    details: Coordinate、Point、LineString、Polygon、Multi* 系列——深入理解 OGC 简单要素规范的每一层，打好扎实基础。
+    link: /02-geometry-fundamentals/geometry-hierarchy
+    linkText: 探索几何模型 →
+  - icon: 🔍
+    title: 空间关系与 DE-9IM
+    details: 从 Intersects 到 DE-9IM 自定义模式，理解每个谓词背后的拓扑原理，不再被"Contains 为什么返回 false"困惑。
+    link: /03-spatial-relations/relationships
+    linkText: 理解空间谓词 →
+  - icon: ⊕
+    title: 丰富的几何运算
+    details: Union、Intersection、Buffer、ConvexHull、Simplify、Affine——覆盖所有常见空间变换，配合批量合并策略应对大规模数据。
+    link: /04-geometry-operations/overlay
+    linkText: 学习几何运算 →
+  - icon: 📏
+    title: 精确的空间测量
+    details: 面积、长度、距离、最近点、线性参考——从基础测量到沿线投影，解决实际业务中的定位与度量问题。
+    link: /05-spatial-measurement/measurement
+    linkText: 掌握空间测量 →
+  - icon: ⚡
+    title: 性能优化实战
+    details: PreparedGeometry 缓存 + STRtree/KdTree/Quadtree 空间索引，让万级数据的空间查询从秒级降到毫秒级。
+    link: /06-performance/prepared-geometry
+    linkText: 性能优化 →
+  - icon: 🔺
+    title: 三角剖分与高级扩展
+    details: Delaunay 三角剖分、Voronoi 图、自定义 GeometryFilter/Transformer——掌握 NTS 的算法能力与扩展机制。
+    link: /07-advanced-topics/triangulation
+    linkText: 深入高级主题 →
+  - icon: 🔌
+    title: 生态集成与实战
+    details: EF Core + PostGIS/SQL Server/SpatiaLite 无缝集成，坐标系转换，从代码到数据库打通全链路。
+    link: /08-ecosystem/ef-core
+    linkText: 生态集成 →
 ---

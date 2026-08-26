@@ -25,132 +25,137 @@ export default withMermaid(
       { text: '首页', link: '/' },
       {
         text: '入门',
-        link: '/guide/getting-started'
+        link: '/01-getting-started/introduction'
       },
       {
-        text: '核心概念',
-        items: [
-          { text: '坐标与几何层级', link: '/core/geometry-hierarchy' },
-          { text: 'WKT 与 WKB', link: '/core/wkt-wkb' },
-          { text: '几何工厂 GeometryFactory', link: '/core/geometry-factory' }
-        ]
+        text: '几何基础',
+        link: '/02-geometry-fundamentals/geometry-hierarchy'
       },
       {
-        text: '操作与谓词',
+        text: '核心能力',
         items: [
-          { text: '几何操作', link: '/operations/overlay' },
-          { text: '空间谓词', link: '/predicates/relationships' },
-          { text: '测量与分析', link: '/analysis/measurement' }
+          { text: '空间关系', link: '/03-spatial-relations/relationships' },
+          { text: '几何运算', link: '/04-geometry-operations/overlay' },
+          { text: '空间测量', link: '/05-spatial-measurement/measurement' }
         ]
       },
       {
         text: '进阶',
         items: [
-          { text: 'PreparedGeometry', link: '/advanced/prepared-geometry' },
-          { text: '三角剖分', link: '/advanced/triangulation' },
-          { text: '集成 EF Core', link: '/integration/ef-core' }
+          { text: '性能优化', link: '/06-performance/prepared-geometry' },
+          { text: '高级主题', link: '/07-advanced-topics/triangulation' },
+          { text: '生态集成', link: '/08-ecosystem/ef-core' }
         ]
       },
       {
-        text: '资源',
+        text: '附录',
         items: [
-          { text: '速查表', link: '/cookbook/cheatsheet' },
-          { text: '常见问题', link: '/cookbook/faq' },
-          { text: '官方资料', link: '/cookbook/resources' }
+          { text: 'API 速查表', link: '/appendix/cheatsheet' },
+          { text: '常见问题', link: '/appendix/faq' },
+          { text: '官方资料', link: '/appendix/resources' }
         ]
       }
     ],
 
     sidebar: {
-      '/guide/': [
+      '/01-getting-started/': [
         {
-          text: '入门',
+          text: '第一阶段：入门之旅',
           collapsed: false,
           items: [
-            { text: '认识 NetTopologySuite', link: '/guide/introduction' },
-            { text: '快速开始', link: '/guide/getting-started' },
-            { text: '第一个几何对象', link: '/guide/first-geometry' }
+            { text: '认识 NetTopologySuite', link: '/01-getting-started/introduction' },
+            { text: '快速开始', link: '/01-getting-started/quickstart' },
+            { text: '第一个几何对象', link: '/01-getting-started/first-geometry' }
           ]
         }
       ],
-      '/core/': [
+      '/02-geometry-fundamentals/': [
         {
-          text: '核心概念',
+          text: '第二阶段：几何基础',
           collapsed: false,
           items: [
-            { text: '坐标与几何层级', link: '/core/geometry-hierarchy' },
-            { text: '几何属性', link: '/core/geometry-properties' },
-            { text: 'WKT 与 WKB', link: '/core/wkt-wkb' },
-            { text: '几何工厂 GeometryFactory', link: '/core/geometry-factory' },
-            { text: '精度模型 PrecisionModel', link: '/core/precision-model' }
+            { text: '坐标与坐标序列', link: '/02-geometry-fundamentals/coordinate-system' },
+            { text: '几何类型层级', link: '/02-geometry-fundamentals/geometry-hierarchy' },
+            { text: '几何属性', link: '/02-geometry-fundamentals/geometry-properties' },
+            { text: '几何工厂 GeometryFactory', link: '/02-geometry-fundamentals/geometry-factory' },
+            { text: '精度模型 PrecisionModel', link: '/02-geometry-fundamentals/precision-model' },
+            { text: 'WKT 与 WKB', link: '/02-geometry-fundamentals/wkt-wkb' },
+            { text: '几何遍历与提取', link: '/02-geometry-fundamentals/geometry-iteration' }
           ]
         }
       ],
-      '/operations/': [
+      '/03-spatial-relations/': [
         {
-          text: '几何操作',
+          text: '第三阶段：空间关系',
           collapsed: false,
           items: [
-            { text: '叠加分析 (Overlay)', link: '/operations/overlay' },
-            { text: '缓冲区 Buffer', link: '/operations/buffer' },
-            { text: '凸包与简化', link: '/operations/convex-simplify' },
-            { text: '仿射变换', link: '/operations/affine-transform' }
+            { text: '空间关系与谓词', link: '/03-spatial-relations/relationships' },
+            { text: 'DE-9IM 模型', link: '/03-spatial-relations/de9im' }
           ]
         }
       ],
-      '/predicates/': [
+      '/04-geometry-operations/': [
         {
-          text: '空间谓词',
+          text: '第四阶段：几何运算',
           collapsed: false,
           items: [
-            { text: '空间关系与谓词', link: '/predicates/relationships' },
-            { text: 'DE-9IM 模型', link: '/predicates/de9im' }
+            { text: '叠加分析 (Overlay)', link: '/04-geometry-operations/overlay' },
+            { text: '批量合并', link: '/04-geometry-operations/batch-union' },
+            { text: '缓冲区 Buffer', link: '/04-geometry-operations/buffer' },
+            { text: '凸包与简化', link: '/04-geometry-operations/convex-simplify' },
+            { text: '仿射变换', link: '/04-geometry-operations/affine-transform' }
           ]
         }
       ],
-      '/analysis/': [
+      '/05-spatial-measurement/': [
         {
-          text: '空间分析',
+          text: '第五阶段：空间测量',
           collapsed: false,
           items: [
-            { text: '测量与距离', link: '/analysis/measurement' },
-            { text: '最近点与投影', link: '/analysis/nearest-points' },
-            { text: '线性参考', link: '/analysis/linear-referencing' }
+            { text: '测量与距离', link: '/05-spatial-measurement/measurement' },
+            { text: '最近点与投影', link: '/05-spatial-measurement/nearest-points' },
+            { text: '线性参考', link: '/05-spatial-measurement/linear-referencing' }
           ]
         }
       ],
-      '/advanced/': [
+      '/06-performance/': [
         {
-          text: '进阶主题',
+          text: '第六阶段：性能优化',
           collapsed: false,
           items: [
-            { text: 'PreparedGeometry 性能优化', link: '/advanced/prepared-geometry' },
-            { text: '三角剖分与曲面', link: '/advanced/triangulation' },
-            { text: '空间索引 STRtree', link: '/advanced/spatial-index' },
-            { text: '几何提取与遍历', link: '/advanced/geometry-iteration' },
-            { text: '批量 Union', link: '/advanced/batch-union' },
-            { text: '自定义操作与扩展', link: '/advanced/extending' }
+            { text: 'PreparedGeometry 性能优化', link: '/06-performance/prepared-geometry' },
+            { text: '空间索引 STRtree', link: '/06-performance/spatial-index' }
           ]
         }
       ],
-      '/integration/': [
+      '/07-advanced-topics/': [
         {
-          text: '生态集成',
+          text: '第七阶段：高级主题',
           collapsed: false,
           items: [
-            { text: 'EF Core 集成', link: '/integration/ef-core' },
-            { text: '数据库与 PostGIS', link: '/integration/databases' }
+            { text: '三角剖分与曲面', link: '/07-advanced-topics/triangulation' },
+            { text: '自定义操作与扩展', link: '/07-advanced-topics/extending' }
           ]
         }
       ],
-      '/cookbook/': [
+      '/08-ecosystem/': [
         {
-          text: '实用资源',
+          text: '第八阶段：生态集成',
           collapsed: false,
           items: [
-            { text: 'API 速查表', link: '/cookbook/cheatsheet' },
-            { text: '常见问题 FAQ', link: '/cookbook/faq' },
-            { text: '官方资料与链接', link: '/cookbook/resources' }
+            { text: 'EF Core 集成', link: '/08-ecosystem/ef-core' },
+            { text: '数据库与 PostGIS', link: '/08-ecosystem/databases' }
+          ]
+        }
+      ],
+      '/appendix/': [
+        {
+          text: '附录',
+          collapsed: false,
+          items: [
+            { text: 'API 速查表', link: '/appendix/cheatsheet' },
+            { text: '常见问题 FAQ', link: '/appendix/faq' },
+            { text: '官方资料与链接', link: '/appendix/resources' }
           ]
         }
       ]
