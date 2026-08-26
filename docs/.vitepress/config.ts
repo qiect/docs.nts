@@ -29,7 +29,7 @@ export default withMermaid(
       },
       {
         text: '几何基础',
-        link: '/02-geometry-fundamentals/geometry-hierarchy'
+        link: '/02-geometry-fundamentals/coordinate-system'
       },
       {
         text: '核心能力',
